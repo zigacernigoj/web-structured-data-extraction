@@ -107,7 +107,3 @@ venv.bak/
 # IDEA and others
 .DS_store
 .idea
-
-# database string
-/connection.txt
-/crawler/connection.txt
