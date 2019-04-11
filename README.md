@@ -25,33 +25,6 @@ The whole report will be available in file report.pdf
 
 **How to arrange them into folders?**
 
-a) 3 folders for **approaches** and in them files for **site types**:
-(votes for this: Ziga)
-- root
-  - regex
-    - rs-re.py
-    - os-re.py
-    - fc-re.py
-  - xpath
-    - rs-xp.py
-    - os-xp.py
-    - fc-xp.py
-  - roadrunner
-    - rr.py
- 
- b) 3 folders for **site types** and in them files for **approaches**:
-- root
-  - rtvslo
-    - rs-re.py
-    - rs-xp.py
-  - overstock
-    - os-re.py
-    - os-xp.py
-  - free choice
-    - fc-re.py
-    - fc-xp.py
-  - *additional folder for roadrunner, since it's one alg. for all three* roadrunner
-    - rr.py
     
     
  
