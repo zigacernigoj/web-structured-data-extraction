@@ -27,10 +27,10 @@ if __name__ == "__main__":
             print(file)
             f = open(file, "r")
             content = f.read()
-            re.process_file(content)
+            print("RE: " + str(re.process_file(content, page)))
             if type == 'xpath':
-                xpath.process_file(content)
+                xpath.process_file(content, page)
             elif type == 're':
-                re.process_file(content)
+                re.process_file(content, page)
 
     print("ended")

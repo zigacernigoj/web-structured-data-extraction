@@ -1,5 +1,16 @@
 import re
 
+pages = {
+    'rtvslo.si': {
+        'Title': r"<h1[^>]*>(.*)<\/h1[^>]*>",
+        'SubTitle': r"<div[^>]*class=\"[^\"]*subtitle[^\"]*\"[^>]*>(.*)<\/div[^>]*>",
+        'Lead': r"<[^>]*class=\"[^\"]*lead[^\"]*\"[^>]*>(.*)<\/[^>]*>",
+        'Content': r"<[^>]*class=\"[^\"]*article-body[^\"]*\"[^>]*>(.*)<\/[^>]*>",
+        'Author': r"<[^>]*class=\"[^\"]*author-name[^\"]*\"[^>]*>(.*)<\/[^>]*>",
+        'PublishedTime': r"<[^>]*class=\"[^\"]*publish-meta[^\"]*\"[^>]*>(.*)<\/[^>]*>"
+    }
+}
+
 
 def execute_regex(content, regex):
     pattern = re.compile(regex)
@@ -9,9 +20,17 @@ def execute_regex(content, regex):
     return "Ni rezultata"
 
 
-def process_file(content):
+def process_file(content, page):
     print("RE")
-    # TODO refactor
+
+    result = {}
+    for k, v in pages[page].items():
+        regular = execute_regex(content, v)
+        print(k + ' is at: ' + v + ' with value: ' + regular)
+        result[k] = regular
+
+    """
+        
     result = execute_regex(content, "<h1[^>]*>(.*)<\/h1[^>]*>")
     print("Found title: '{}'.".format(result))
     
@@ -29,3 +48,6 @@ def process_file(content):
     
     result = execute_regex(content, "<[^>]*class=\"[^\"]*article-body[^\"]*\"[^>]*>(.*)<\/[^>]*>")
     print("Found article body: '{}'.".format(result))
+    """
+
+    return result
