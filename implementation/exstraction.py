@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     # TODO implement
     type = 'xpath'
-    page = 'rtvslo.si'
+    page = 'overstock.com'
 
     if len(sys.argv) >= 2:
         type = sys.argv[1]
@@ -25,12 +25,12 @@ if __name__ == "__main__":
         file = join(path, f)
         if isfile(file):
             print(file)
-            f = open(file, "r")
+            f = open(file, "r", encoding='utf-8', errors='ignore')
             content = f.read()
-            print("RE: " + str(re.process_file(content, page)))
             if type == 'xpath':
                 xpath.process_file(content, page)
             elif type == 're':
                 re.process_file(content, page)
+            f.close()
 
     print("ended")
