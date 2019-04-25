@@ -33,6 +33,7 @@ Note that you must then install needed libraries with `pipenv` not `pip`.
 ## Running
 
 Go to implementation folder and run `python extraction.py <params>`
+
 Parameters (`<params>`):
 - first parameter: approach (regex: `re` , xpath: `xpath`, road runner: `road`)
 - second parameter: page type (rtvslo.si: `rtvslo.si`, overstock.com: `overstock.com`, our choice: TBA)
