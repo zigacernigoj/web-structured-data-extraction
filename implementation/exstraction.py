@@ -8,7 +8,7 @@ from src import re
 if __name__ == "__main__":
 
     # TODO implement
-    type = 'xpath'
+    type = 're'
     page = 'overstock.com'
 
     if len(sys.argv) >= 2:
