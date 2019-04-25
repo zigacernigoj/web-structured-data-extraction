@@ -32,7 +32,10 @@ Note that you must then install needed libraries with `pipenv` not `pip`.
 
 ## Running
 
-go to implementation folder and run `python exstratcion.py <params>`
+Go to implementation folder and run `python extraction.py <params>`
+Parameters (`<params>`):
+- first parameter: approach (regex: `re` , xpath: `xpath`, road runner: `road`)
+- second parameter: page type (rtvslo.si: `rtvslo.si`, overstock.com: `overstock.com`, our choice: TBA)
 
 ## About
 This project contains three different approaches for the structured data extraction from the web:
@@ -41,23 +44,7 @@ This project contains three different approaches for the structured data extract
 - Using XPath
 - RoadRunner-like implementation
 
-The whole report will be available in file report.pdf
-
-
-## Structure
-
-3 types of sites, 3 approaches:
-- 3 different **regex** algorithms (3 site types)
-- 3 different **xpath** algorithms (3 site types)
-- 1 algorithm for **roadrunner** - same for all site types
-
-|                  | regex (re) | xpath (xp) | roadrunner (rr)  |
-|---               |---         |---         |---               |
-| rtvslo (rs)      | rs-re.py   | rs-xp.py   | rr.py (just one) |
-| overstock (os)   | os-re.py   | os-xp.py   | rr.py (just one) |
-| free choice (fc) | fc-re.py   | fc-xp.py   | rr.py (just one) |
-
-**How to arrange them into folders?**
+The whole report will be available in file `report.pdf`
 
 
     
