@@ -28,6 +28,7 @@ Note that you must then install needed libraries with `pipenv` not `pip`.
 
 - Requests: run `pip install requests`
 - Lxml: run `pip install lxml`
+- BeautifulSoup4: run `pip install bs4`
 
 
 ## Running
@@ -36,7 +37,7 @@ Go to implementation folder and run `python extraction.py <params>`
 
 Parameters (`<params>`):
 - first parameter: approach (regex: `re` , xpath: `xpath`, road runner: `road`)
-- second parameter: page type (rtvslo.si: `rtvslo.si`, overstock.com: `overstock.com`, our choice: TBA)
+- second parameter: page type (rtvslo.si: `rtvslo.si`, overstock.com: `overstock.com`, our choice: `bolha.com`)
 
 ## About
 This project contains three different approaches for the structured data extraction from the web:
