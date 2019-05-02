@@ -1,36 +1,57 @@
 # main file that contains main function
 import sys
+import os
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, abspath, dirname
 from src import xpath
 from src import re
+from src import road
 
-if __name__ == "__main__":
 
-    # TODO implement
-    type = 're'
-    page = 'overstock.com'
-
-    if len(sys.argv) >= 2:
-        type = sys.argv[1]
-
-    if len(sys.argv) >= 3:
-        page = sys.argv[2]
-
-    print("Inputed page {} with type {}".format(page, type))
-
-    path = "../input/" + page + "/"
-
-    for f in listdir(path):
-        file = join(path, f)
+def get_files_contents(path):
+    all_contents = []
+    for el in listdir(path):
+        file = join(path, el)
         if isfile(file):
             print(file)
             f = open(file, "r", encoding='utf-8', errors='ignore')
             content = f.read()
-            if type == 'xpath':
-                xpath.process_file(content, page)
-            elif type == 're':
-                re.process_file(content, page)
+            all_contents.append(content)
             f.close()
 
+    return all_contents
+
+
+def main(start_arguments):
+    # TODO implement
+    approach_type = 're'
+    page_type = 'overstock.com'
+
+    if len(start_arguments) >= 2:
+        approach_type = start_arguments[1]
+
+    if len(start_arguments) >= 3:
+        page_type = start_arguments[2]
+
+    print("Inputed page {} with type {}".format(page_type, approach_type))
+
+    path = "../input/" + page_type + "/"
+    path = join(dirname(abspath(__file__)), path)
+
+    all_contents = get_files_contents(path)
+    print("number of contents:", len(all_contents))
+
+    if approach_type == 'xpath':
+        for content in all_contents:
+            xpath.process_file(content, page_type)
+    elif approach_type == 're':
+        for content in all_contents:
+            re.process_file(content, page_type)
+    elif approach_type == 'road':
+        road.process_file(all_contents)
+
     print("ended")
+
+
+if __name__ == "__main__":
+    main(sys.argv)
