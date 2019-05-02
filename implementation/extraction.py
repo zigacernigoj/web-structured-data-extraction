@@ -1,6 +1,5 @@
 # main file that contains main function
 import sys
-import os
 from os import listdir
 from os.path import isfile, join, abspath, dirname
 from src import xpath
