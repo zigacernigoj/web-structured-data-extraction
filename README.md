@@ -26,7 +26,6 @@ Note that you must then install needed libraries with `pipenv` not `pip`.
 
 #### Libraries
 
-- Requests: run `pip install requests`
 - Lxml: run `pip install lxml`
 - BeautifulSoup4: run `pip install bs4`
 
