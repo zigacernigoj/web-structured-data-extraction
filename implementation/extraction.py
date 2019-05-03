@@ -24,7 +24,7 @@ def get_files_contents(path):
 def main(start_arguments):
     # TODO implement
     approach_type = 're'
-    page_type = 'overstock.com'
+    page_type = 'bolha.com'
 
     if len(start_arguments) >= 2:
         approach_type = start_arguments[1]

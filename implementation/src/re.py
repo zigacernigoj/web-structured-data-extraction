@@ -24,16 +24,16 @@ pages = {
         'SavingPercent': r'<span class="littleorange">[^\(]*\(([^<]*)\)</span>'
     },
     'bolha.com': {
-        'Title': '',
-        'Price': '',
-        'DaysUntilExpires': '',
-        'User': '',
-        'Address': '',
-        'Phone': '',
-        'Mobile': '',
-        'Content': '',
-        'MainImage': '',
-        'Images': ''
+        'Title': r"<h1[^>]*>(.*)<\/h1[^>]*>",
+        'Price': '<div class="price">Cena: <span>([^<]*)</span></div>',
+        'DaysUntilExpires': r'<p class="validTo">Oglas poteče čez ([^\s]*) dni </p>',
+        'User': '<p><label>Uporabnik:</label><strong>([^<]*)</strong></p>',
+        'Address': '<p><label>Naslov:</label><strong>([^<]*)<',
+        'Phone': '<p><label>Telefon:</label><strong>([^<]*)<',
+        'Mobile': '<p><label>Mobilna številka:</label><strong>([^<]*)<',
+        'Content': '<div class="content">(.+?(?=</div))</div>',
+        'MainImage': '<td class="imgHolder">.*<img src="([^"]*)"',
+        'Images': '<td class="thumb">.+?(?=<img)<img src="([^"]*)"'
     }
 }
 
@@ -67,8 +67,6 @@ def get_results(content, page, index):
         if k == 'Images':
             arr = True
         regular = execute_regex(content, v, index, arr)
-        if k == 'Content':
-            regular = ' '.join(regular)
         if i == 1 and regular == no_result:
             return None
         print(k + ' is at: ' + v + ' with value: ' + str(regular))
