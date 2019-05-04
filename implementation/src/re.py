@@ -1,3 +1,4 @@
+import json
 import re
 
 pages = {
@@ -69,7 +70,7 @@ def get_results(content, page, index):
         regular = execute_regex(content, v, index, arr)
         if i == 1 and regular == no_result:
             return None
-        print(k + ' is at: ' + v + ' with value: ' + str(regular))
+        # print(k + ' is at: ' + v + ' with value: ' + str(regular))
         result[k] = regular
         # if k == 'Saving':
         #     exploded = regular.split(" ")
@@ -82,7 +83,7 @@ def get_results(content, page, index):
 
 
 def process_file(content, page):
-    print("RE")
+    # print("RE")
 
     if page == 'overstock.com':
         result = []
@@ -95,7 +96,11 @@ def process_file(content, page):
     else:
         result = get_results(content, page, 0)
 
-    print(result)
+    # convert into JSON:
+    y = json.dumps(result, ensure_ascii=False)
+
+    # the result is a JSON string:
+    print(y)
     return result
 
 
@@ -106,7 +111,7 @@ def process_file_old(content, page):
         result = []
         pattern = re.compile(r'<table[^>]*bgcolor=\"[^\"]*\"[^>]*>(.*)<\/table[^>]*>', re.MULTILINE)
         items = pattern.search(content)
-        print(items)
+        # print(items)
         for item in items:
             result.append(get_results(item, page))
     else:

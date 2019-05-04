@@ -22,7 +22,6 @@ def get_files_contents(path):
 
 
 def main(start_arguments):
-    # TODO implement
     approach_type = 're'
     page_type = 'bolha.com'
 
@@ -49,7 +48,7 @@ def main(start_arguments):
     elif approach_type == 'road':
         road.process_file(all_contents)
 
-    print("ended")
+    # print("ended")
 
 
 if __name__ == "__main__":

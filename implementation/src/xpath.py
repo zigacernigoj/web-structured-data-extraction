@@ -1,3 +1,4 @@
+import json
 from lxml import html
 
 pages = {
@@ -49,18 +50,18 @@ def get_results(tree, page, index):
     for k, v in pages[page].items():
         i += 1
         arr = False
-        if k == 'Images' or k == 'Content':
+        if k == 'Images' or (k == 'Content' and page != 'overstock.com'):
             arr = True
         xpath = get_to_xpath(tree, v, index, arr)
-        if k == 'Content':
+        if k == 'Content' and page != 'overstock.com':
             xpath = ' '.join(xpath)
         if i == 1 and xpath == no_result:
             return None
-        print(k + ' is at: ' + v + ' with value: ' + str(xpath))
+        # print(k + ' is at: ' + v + ' with value: ' + str(xpath))
         if k == 'Saving':
             exploded = xpath.split(" ")
             result[k] = exploded[0]
-            result['SavingPercent'] = exploded[1]
+            result['SavingPercent'] = exploded[1].replace("(", "").replace(")", "")
         else:
             result[k] = xpath
 
@@ -68,7 +69,7 @@ def get_results(tree, page, index):
 
 
 def process_file(content, page):
-    print("XPATH")
+    # print("XPATH")
     tree = html.fromstring(content)
     if page == 'overstock.com':
         result = []
@@ -81,12 +82,16 @@ def process_file(content, page):
     else:
         result = get_results(tree, page, 0)
 
-    print(result)
+    # convert into JSON:
+    y = json.dumps(result, ensure_ascii=False)
+
+    # the result is a JSON string:
+    print(y)
     return result
 
 
 def process_file_old(content, page):
-    print("XPATH")
+    # print("XPATH")
     tree = html.fromstring(content)
     if page == 'overstock.com':
         result = []
