@@ -6,7 +6,7 @@ pages = {
         'Title': '//*[@id="main-container"]//h1/text()',
         'SubTitle': '//*[@id="main-container"]//*[@class="subtitle"]/text()',
         'Lead': '//*[@id="main-container"]//*[@class="lead"]/text()',
-        'Content': '//*[@id="main-container"]//*[@class="article-body"]//descendant::*/text()',
+        'Content': '//*[@id="main-container"]//*[@class="article-body"]/*[@class="article"]//descendant::p/text()',
         'Author': '//*[@id="main-container"]//*[@class="author-name"]/text()',
         'PublishedTime': '//*[@id="main-container"]//*[@class="publish-meta"]/text()'
     },

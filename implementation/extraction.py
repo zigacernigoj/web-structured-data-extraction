@@ -23,7 +23,7 @@ def get_files_contents(path):
 
 def main(start_arguments):
     approach_type = 're'
-    page_type = 'bolha.com'
+    page_type = 'rtvslo.si'
 
     if len(start_arguments) >= 2:
         approach_type = start_arguments[1]
