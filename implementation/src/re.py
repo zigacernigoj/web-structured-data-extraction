@@ -8,8 +8,9 @@ pages = {
         # 'SubTitle': r"<div[^>]*class=\"[^\"]*subtitle[^\"]*\"[^>]*>(.*)<\/div[^>]*>",
         'Lead': r'<p class="lead">(.*?)</p>',
         # 'Lead': r"<[^>]*class=\"[^\"]*lead[^\"]*\"[^>]*>(.*)<\/[^>]*>",
+        'Content': r'<article class="article">(.+?(?=</article))',
+        # 'Content': r'<article class="article">.+?(?=<p)<p[^>]*>(.+?(?=</p))</p>',
         # 'Content': r'<p[^>]*>(.)*?(?=<\/p>)',
-        'Content': r'<article class="article">.+?(?=<p)<p[^>]*>(.+?(?=</p))</p>',
         # 'Content': r'<div class="article-body">(.*?)</div>',
         # 'Content': r"<[^>]*class=\"[^\"]*article-body[^\"]*\"[^>]*>(.*)<\/[^>]*>",
         'Author': r'<div class="author-name">(.*?)</div>',
@@ -73,6 +74,10 @@ def get_results(content, page, index):
         if i == 1 and regular == no_result:
             return None
         # print(k + ' is at: ' + v + ' with value: ' + str(regular))
+        if k == 'Content':
+            # print(regular)
+            regular = ''.join(execute_regex(regular, r'<\s*p[^>]*>([^<]*)<\s*\/\s*p\s*>', index, True))
+            #print(regular)
         result[k] = regular
         # if k == 'Saving':
         #     exploded = regular.split(" ")
