@@ -28,6 +28,7 @@ Note that you must then install needed libraries with `pipenv` not `pip`.
 
 - Lxml: run `pip install lxml`
 - BeautifulSoup4: run `pip install bs4`
+- Numpy: run `pip install numpy`
 
 
 ## Running

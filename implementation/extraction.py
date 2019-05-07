@@ -5,6 +5,8 @@ from os.path import isfile, join, abspath, dirname
 from src import xpath
 from src import re
 from src import road
+from src import road2
+from src import road3
 
 
 def get_files_contents(path):
@@ -47,7 +49,7 @@ def main(start_arguments):
         for content in all_contents:
             re.process_file(content, page_type)
     elif approach_type == 'road':
-        road.process_file(all_contents)
+        road2.process_file(all_contents)
 
     print("ended")
 
