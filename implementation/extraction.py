@@ -24,9 +24,8 @@ def get_files_contents(path):
 
 
 def main(start_arguments):
-    # TODO implement
     approach_type = 're'
-    page_type = 'overstock.com'
+    page_type = 'rtvslo.si'
 
     if len(start_arguments) >= 2:
         approach_type = start_arguments[1]
@@ -51,7 +50,7 @@ def main(start_arguments):
     elif approach_type == 'road':
         road2.process_file(all_contents)
 
-    print("ended")
+    # print("ended")
 
 
 if __name__ == "__main__":
